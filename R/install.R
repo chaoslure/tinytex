@@ -124,7 +124,7 @@ install_tinytex = function(
         Sys.setenv(CTAN_REPO = repository)
         on.exit(Sys.unsetenv('CTAN_REPO'), add = TRUE)
       }
-      download_file('https://yihui.org/gh/tinytex/tools/install-unx.sh')
+      download_file('https://github.com/chaoslure/tinytex/blob/master/tools/install-unx.sh')
       res = system2('sh', c(
         'install-unx.sh', if (not_ctan) c(
           '--no-admin', '--path', shQuote(repository), if (macos && https) 'tlgpg'
@@ -153,9 +153,9 @@ install_tinytex = function(
         if (repository == 'ctan') 'http://mirror.ctan.org/systems/texlive/tlnet' else repository,
         '/install-tl.zip'
       ), mode = 'wb')
-      download_file('https://yihui.org/gh/tinytex/tools/pkgs-custom.txt')
+      download_file('https://github.com/chaoslure/tinytex/blob/master/tools/pkgs-custom.txt')
       pkgs_custom = readLines('pkgs-custom.txt')
-      download_file('https://yihui.org/gh/tinytex/tools/tinytex.profile')
+      download_file('https://github.com/chaoslure/tinytex/blob/master/tools/tinytex.profile')
       x = c(
         readLines('tinytex.profile'), 'TEXMFCONFIG $TEXMFSYSCONFIG',
         'TEXMFHOME $TEXMFLOCAL', 'TEXMFVAR $TEXMFSYSVAR'
