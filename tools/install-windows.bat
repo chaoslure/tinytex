@@ -13,7 +13,7 @@ powershell -Command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Com
 del install-tl.zip
 
 rem download tinytex.profile and modify it (set texdir to ./TinyTeX)
-powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest https://yihui.org/gh/tinytex/tools/tinytex.profile -OutFile tinytex.profile" || exit /b
+powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest https://github.com/chaoslure/tinytex/blob/master/tools/tinytex.profile" || exit /b
 powershell -Command "(gc tinytex.profile) -replace '\./', './TinyTex/' | Out-File -encoding ASCII tinytex.profile"
 
 echo TEXMFCONFIG $TEXMFSYSCONFIG>> tinytex.profile
@@ -21,7 +21,7 @@ echo TEXMFHOME $TEXMFLOCAL>> tinytex.profile
 echo TEXMFVAR $TEXMFSYSVAR>> tinytex.profile
 
 rem download the custom package list
-powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest https://yihui.org/gh/tinytex/tools/pkgs-custom.txt -OutFile pkgs-custom.txt"
+powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest https://github.com/chaoslure/tinytex/blob/master/tools/pkgs-custom.txt -OutFile pkgs-custom.txt"
 
 rem an automated installation of TeXLive (infrastructure only)
 cd install-tl-*
